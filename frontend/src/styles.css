@@ -1,0 +1,201 @@
+/*
+  FrostShield – палета од мразно утро над пластеници:
+  ледено сина за студот, лисна зелена за здрав расад, доматно црвена само за штета.
+*/
+:root {
+  --bg: #eaf1f4;
+  --surface: #ffffff;
+  --ink: #18303c;
+  --ink-quiet: #5b7380;
+  --line: #cfdde4;
+  --frost-deep: #1f5f8b;
+  --frost: #8fc3dd;
+  --leaf: #3f6f2f;
+  --leaf-soft: #a9c98f;
+  --damage: #b8322a;
+  --ok: #2f6b3a;
+
+  --display: "Unbounded", "Arial Black", sans-serif;
+  --body: "IBM Plex Sans", system-ui, sans-serif;
+
+  --r-lg: 14px;
+  --r-sm: 6px;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 var(--body);
+}
+a { color: var(--frost-deep); }
+code { font-size: 0.85em; word-break: break-all; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+
+.app { max-width: 1080px; margin: 0 auto; padding: 0 20px 48px; }
+
+/* ---------- Заглавие ---------- */
+.top {
+  display: flex; align-items: center; gap: 24px; flex-wrap: wrap;
+  padding: 20px 0; border-bottom: 1px solid var(--line);
+}
+.brand { display: flex; align-items: baseline; gap: 10px; margin-right: auto; }
+.brand-mark {
+  width: 14px; height: 14px; align-self: center;
+  background: var(--frost-deep);
+  clip-path: polygon(50% 0, 62% 38%, 100% 50%, 62% 62%, 50% 100%, 38% 62%, 0 50%, 38% 38%);
+}
+.brand-name { font: 700 20px/1 var(--display); letter-spacing: -0.02em; }
+.tabs { display: flex; gap: 4px; flex-wrap: wrap; }
+.tab {
+  border: 0; background: none; font: 500 15px var(--body); color: var(--ink-quiet);
+  padding: 8px 12px; border-radius: var(--r-sm); cursor: pointer;
+}
+.tab:hover { color: var(--ink); }
+.tab.active { color: var(--ink); background: var(--surface); box-shadow: inset 0 -2px 0 var(--frost-deep); }
+
+/* ---------- Копчиња и полиња ---------- */
+.btn {
+  font: 600 15px var(--body); padding: 10px 16px; border-radius: var(--r-sm);
+  border: 1px solid var(--ink); background: var(--surface); color: var(--ink); cursor: pointer;
+}
+.btn:hover:not(:disabled) { background: var(--bg); }
+.btn.primary { background: var(--frost-deep); border-color: var(--frost-deep); color: #fff; }
+.btn.primary:hover:not(:disabled) { background: #174a6c; }
+.btn:disabled { opacity: 0.45; cursor: not-allowed; }
+.btn.wallet.on { border-color: var(--leaf); color: var(--leaf); }
+.link { border: 0; background: none; color: var(--frost-deep); font: 500 14px var(--body); cursor: pointer; padding: 4px 0; text-decoration: underline; text-underline-offset: 3px; }
+:focus-visible { outline: 3px solid var(--frost); outline-offset: 2px; }
+
+input, select {
+  width: 100%; font: 15px var(--body); color: var(--ink);
+  padding: 9px 10px; border: 1px solid var(--line); border-radius: var(--r-sm); background: #fbfdfe;
+}
+input:focus, select:focus { border-color: var(--frost-deep); }
+label { display: grid; gap: 6px; font-size: 14px; font-weight: 500; }
+label small { font-weight: 400; color: var(--ink-quiet); }
+
+/* ---------- Распоред ---------- */
+main { padding-top: 28px; display: grid; gap: 20px; }
+.panel { background: var(--surface); border-radius: var(--r-lg); padding: 24px; }
+.panel h2 { font: 700 18px/1.3 var(--display); letter-spacing: -0.01em; margin: 0 0 8px; }
+.panel h3 { font-size: 16px; margin: 16px 0 8px; }
+.panel-head { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 12px; }
+.panel-head select { width: auto; }
+.muted { color: var(--ink-quiet); margin: 0 0 16px; max-width: 68ch; }
+.small { font-size: 14px; }
+.stack { display: grid; gap: 20px; }
+.split { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 20px; align-items: start; }
+.form { display: grid; gap: 16px; }
+.form.inline { grid-template-columns: 1fr 200px auto; align-items: end; }
+.form.inline .muted { margin: 0; }
+.row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.row.three { grid-template-columns: repeat(3, 1fr); }
+.row.four { grid-template-columns: repeat(4, 1fr); }
+.narrow { max-width: 420px; }
+.actions { display: flex; gap: 12px; flex-wrap: wrap; }
+
+/* ---------- Херој: последниот мраз ---------- */
+.hero { padding: 16px 0 8px; }
+.hero-where { margin: 0; font-weight: 600; color: var(--frost-deep); }
+.hero-temp {
+  font: 700 clamp(72px, 14vw, 140px)/0.95 var(--display);
+  letter-spacing: -0.05em; margin: 8px 0 12px; color: var(--ink);
+}
+.hero-temp span { font-size: 0.35em; letter-spacing: 0; margin-left: 6px; vertical-align: 0.9em; color: var(--ink-quiet); }
+.hero-title { font: 700 clamp(30px, 5vw, 48px)/1.1 var(--display); letter-spacing: -0.03em; margin: 8px 0 16px; max-width: 18ch; }
+.hero-sub { font-size: 18px; max-width: 62ch; margin: 0 0 20px; }
+.thermo { width: 100%; max-width: 680px; height: auto; display: block; }
+.thermo-tick { font: 12px var(--body); fill: var(--ink-quiet); }
+.thermo-crop { font: 600 13px var(--body); fill: var(--ink); }
+.thermo-min { font: 700 14px var(--body); fill: var(--damage); }
+
+.figures { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.figure { padding: 18px 16px 18px 0; display: grid; gap: 2px; }
+.figure + .figure { padding-left: 16px; border-left: 1px solid var(--line); }
+.figure-value { font: 700 22px/1.2 var(--display); letter-spacing: -0.02em; }
+.figure-label { font-size: 14px; color: var(--ink-quiet); }
+
+/* ---------- Матрица на штета ---------- */
+.matrix { width: 100%; border-collapse: separate; border-spacing: 4px; }
+.matrix th { text-align: left; font-size: 14px; font-weight: 600; padding: 4px 8px; }
+.matrix thead th { color: var(--ink-quiet); font-weight: 500; }
+.matrix td {
+  padding: 12px; border-radius: var(--r-sm); font-weight: 600; font-variant-numeric: tabular-nums;
+  background: color-mix(in srgb, var(--damage) calc(var(--a) * 55%), #f3f6f8);
+  white-space: nowrap;
+  color: var(--ink);
+}
+.matrix td.zero { color: var(--leaf); font-weight: 500; background: #eef4ea; }
+
+/* ---------- Прогноза ---------- */
+.forecast { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; }
+.forecast li { display: grid; gap: 2px; padding: 10px; border-radius: var(--r-sm); background: var(--bg); }
+.forecast li.warn { background: #dbe9f2; box-shadow: inset 0 3px 0 var(--frost-deep); }
+.fc-day { font-size: 13px; color: var(--ink-quiet); }
+.fc-min { font: 700 22px var(--display); }
+.fc-max { font-size: 13px; color: var(--ink-quiet); }
+.fc-warn { font-size: 12px; font-weight: 600; }
+.forecast li:not(.warn) .fc-warn { color: var(--leaf); font-weight: 500; }
+
+/* ---------- Табели ---------- */
+.list { width: 100%; border-collapse: collapse; font-size: 15px; }
+.list > thead > tr > th { text-align: left; font-weight: 500; color: var(--ink-quiet); font-size: 13px; padding: 8px 8px 8px 0; border-bottom: 1px solid var(--line); }
+.list > tbody > tr > td { padding: 10px 8px 10px 0; border-bottom: 1px solid var(--line); }
+.list .num { font-variant-numeric: tabular-nums; }
+.list > tbody > tr.is-open > td { border-bottom-color: transparent; }
+.list > tbody > tr.detail > td { background: var(--bg); padding: 16px; }
+
+/* ---------- Полиси ---------- */
+.policy-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+.policy-money { display: grid; gap: 8px; margin-bottom: 8px; font-weight: 500; }
+.meter { height: 8px; background: var(--bg); border-radius: 4px; overflow: hidden; }
+.meter span { display: block; height: 100%; background: var(--leaf); }
+.claim-open { background: #fbeeed; border-radius: var(--r-sm); padding: 4px 16px 12px; margin: 12px 0; }
+.claim-row { display: grid; grid-template-columns: 1fr auto auto; gap: 16px; align-items: center; padding: 6px 0; }
+
+.quote { display: flex; justify-content: space-between; padding: 14px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.quote strong { font: 700 18px var(--display); }
+.examples { list-style: none; padding: 0; margin: 0 0 16px; }
+.examples li { display: grid; grid-template-columns: 1fr auto auto; gap: 16px; padding: 12px 0; border-bottom: 1px solid var(--line); }
+.ex-pct { color: var(--damage); font-weight: 600; }
+
+.frost-yes { color: var(--frost-deep); font-weight: 600; margin: 0; }
+.frost-no { color: var(--leaf); margin: 0; }
+.error-text { color: var(--damage); margin: 0; font-size: 14px; }
+.edit { border-top: 1px solid var(--line); margin-top: 16px; padding-top: 8px; }
+.empty { text-align: left; }
+.empty-line, .loading { color: var(--ink-quiet); }
+.error-panel { border-left: 4px solid var(--damage); }
+
+/* ---------- Известување ---------- */
+.toast {
+  position: sticky; top: 12px; z-index: 5; margin-top: 16px;
+  display: flex; gap: 16px; align-items: center; flex-wrap: wrap;
+  padding: 12px 16px; border-radius: var(--r-sm); background: var(--ink); color: #fff;
+}
+.toast span { flex: 1; min-width: 200px; }
+.toast a, .toast .link { color: #cfe6f2; }
+.toast.ok { background: var(--ok); }
+.toast.error { background: var(--damage); }
+
+.foot { margin-top: 40px; font-size: 13px; color: var(--ink-quiet); }
+
+/* ---------- Мобилен ---------- */
+@media (max-width: 760px) {
+  .matrix td { padding: 10px 6px; font-size: 14px; }
+  .split, .row, .row.three, .row.four, .form.inline { grid-template-columns: 1fr; }
+  .figures { grid-template-columns: 1fr 1fr; }
+  .figure:nth-child(3) { border-left: 0; padding-left: 0; }
+  .figure:nth-child(n + 3) { border-top: 1px solid var(--line); }
+  .forecast { grid-template-columns: repeat(4, 1fr); }
+  .list.events > thead > tr > th:nth-child(4), .list.events > tbody > tr > td:nth-child(4) { display: none; }
+  .claim-row { grid-template-columns: 1fr; gap: 4px; }
+  .panel { padding: 18px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}
